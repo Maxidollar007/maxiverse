@@ -1,13 +1,16 @@
 import { useTheme } from "./context/themeContext"
 import "remixicon/fonts/remixicon.css";
-import { contactMethods, projects, services, skillCategories, socialLinks } from "./utils/helper";
 import { Card } from "./components/card";
 import { ProgressBar } from "./components/progressBar";
 import { useState } from "react";
 import type { FormData } from "./types";
+import { validationSchemaInformation } from "./validation/validationSchemaInformation";
+import * as yup from 'yup';
+import { contactMethods, projects, services, skillCategories, socialLinks } from "./utils/helper";
 function App() {
 
   const {theme , toogleTheme}=useTheme()
+  const [error,setError]=useState<Record<string, string>>({});
 
   const [formData,setFormData]=useState<FormData>({
     name:"",
@@ -23,6 +26,27 @@ function App() {
     })
   }
 
+  const handleSubmit=async (e:any)=>{
+    e.preventDefault()
+    try{
+      await validationSchemaInformation.validate(formData, { abortEarly: false });
+      console.log("Validation réussie :", formData);
+    }catch (e) {
+      const validationError = e as yup.ValidationError;
+      const newError: Record<string, string> = {};
+
+      validationError.inner.forEach((err: yup.ValidationError) => {
+        if (err.path) {
+          newError[err.path] = err.message;
+        }
+      });
+      setError(newError);
+      console.log(error)
+    }
+
+    }
+
+
   return (
     <>
     <header  className={` ${theme=="light" ? "light" :'dark'} w-full h-dvh  bg-(--background) transition-all duration-700 `}>
@@ -37,9 +61,9 @@ function App() {
               <a href="#services" className="hover:text-(--primary-hover) border px-6 py-3 rounded-md hover:rounded-xl border-(--border) ">Services</a>
               <a href="#realisations" className="hover:text-(--primary-hover) border px-6 py-3 rounded-md hover:rounded-xl border-(--border) ">Realisation</a>
               <a href="#contacts" className="hover:text-(--primary-hover) border px-6 py-3 rounded-md hover:rounded-xl border-(--border) ">Contact</a>
-              <a onClick={toogleTheme}  className={`  ${theme=="light" ? "dark" :'light'} cursor-pointer hover:text-(--primary-hover) border border-(--background) hover:border px-6 py-3 rounded-md hover:rounded-xl hover:border-(--border) `}>
+              <a onClick={toogleTheme}  className={`  ${theme=="light" ? "dark" :'light'} cursor-pointer hover:text-(--primary-hover) border-(--background)  px-6 py-3 rounded-md hover:rounded-xl `}>
                 {
-                  theme=='light' ? "Light ": "Dark"
+                  theme=='light' ? <i className="ri-sun-line"></i>: <i className="ri-moon-line"></i>
                 }
               </a>
             </ul>
@@ -397,6 +421,7 @@ function App() {
                   placeholder="Votre nom..."
                   className="rounded-md text-(--text) bg-(--background) border border-(--border) focus:border-(--primary) focus:outline-none w-full py-3 px-3 transition-colors duration-300"
                 />
+                {error && error.name && <p className="text-xs text-red-500" >{error.name} </p> }
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -412,6 +437,7 @@ function App() {
                   placeholder="Votre email..."
                   className="rounded-md text-(--text) bg-(--background) border border-(--border) focus:border-(--primary) focus:outline-none w-full py-3 px-3 transition-colors duration-300"
                 />
+                {error && error.name && <p className="text-xs text-red-500" >{error.email} </p> }
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -427,10 +453,12 @@ function App() {
                   placeholder="Entrez votre message..."
                   className="rounded-md text-(--text) bg-(--background) border border-(--border) focus:border-(--primary) focus:outline-none w-full p-3 resize-none transition-colors duration-300"
                 />
+                {error && error.name && <p className="text-xs text-red-500" >{error.message} </p> }
               </div>
 
               <button
                 type="submit"
+                onClick={handleSubmit}
                 disabled={status === "sending"}
                 className="bg-(--primary) hover:bg-(--primary-hover) disabled:opacity-60 disabled:cursor-not-allowed text-white px-4 py-3.5 rounded-full flex justify-center items-center gap-2 font-bold cursor-pointer transition-colors duration-300"
               >

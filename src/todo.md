@@ -1,3 +1,0 @@
-- Travailer sur les services de mon portfolio 
-- Compétences que je dispose 
-- Realisation de l'application 
