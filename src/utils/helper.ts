@@ -4,8 +4,8 @@ import gdp from '../image/gdp.webp'
 import gds from '../image/gds.webp'
 import gdt from '../image/gdt.webp'
 import ogin from '../image/ogin.webp'
-import port from '../image/port.png'
-import vete from '../image/vete.png'
+import port from '../image/port.webp'
+import vete from '../image/vete.webp'
 // les services que je propose
 export const services = [
   {
