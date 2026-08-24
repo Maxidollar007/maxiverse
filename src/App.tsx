@@ -181,7 +181,7 @@ function App() {
     </div>
   </section>
 
-  <section id="services" className="w-[90%] md:w-[80%] mx-auto py-20 border-t border-(--border)">
+  <section id="services" className="w-[90%] overflow-hidden  md:w-[80%] mx-auto py-20 border-t border-(--border)">
     <div className="text-center mb-14">
       <span className="text-(--primary) font-mono uppercase tracking-wider text-sm font-semibold">
         Ce que je propose
@@ -201,7 +201,7 @@ function App() {
     </div>
   </section>
 
-  <section id="skills" className="w-[90%] md:w-[80%] mx-auto py-20 border-t border-(--border)">
+  <section id="skills" className="w-[90%] overflow-hidden  md:w-[80%] mx-auto py-20 border-t border-(--border)">
     <div className="text-center mb-14">
       <span className="text-(--primary) font-mono uppercase tracking-wider text-sm font-semibold">
         Stack technique
@@ -252,7 +252,7 @@ function App() {
       </p>
     </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 overflow-hidden  lg:grid-cols-2 gap-8">
       {projects.map((project) => (
         <motion.article
         initial={{opacity:0, x:70}}
@@ -357,7 +357,7 @@ function App() {
     </div>
   </section>
 
-  <section id="contacts" className="w-full border-t border-(--border) py-16">
+  <section id="contacts" className="w-full border-t border-(--border)  py-16">
     <div className="w-[90%] md:w-[80%] mx-auto flex items-center gap-4 mb-12">
       <div className="flex items-center justify-center h-14 w-14 shrink-0 rounded-xl text-(--primary) text-2xl bg-(--surface) border border-(--border)">
         <i className="ri-chat-3-line" />
