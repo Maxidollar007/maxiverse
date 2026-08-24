@@ -1,4 +1,5 @@
 import { useTheme } from "./context/themeContext"
+import emailjs from "@emailjs/browser";
 import "remixicon/fonts/remixicon.css";
 import { Card } from "./components/card";
 import { ProgressBar } from "./components/progressBar";
@@ -12,6 +13,7 @@ function App() {
 
   const {theme , toogleTheme}=useTheme()
   const [error,setError]=useState<Record<string, string>>({});
+  const [status,setStatus]=useState< "Envoyé" | "ok" | "idle">("idle")
 
   const [formData,setFormData]=useState<FormData>({
     name:"",
@@ -27,11 +29,31 @@ function App() {
     })
   }
 
-  const handleSubmit=async (e:any)=>{
+  const handleSubmit=async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
+    setStatus("Envoyé")
     try{
       await validationSchemaInformation.validate(formData, { abortEarly: false });
-      console.log("Validation réussie :", formData);
+      
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+        }
+      )
+      setStatus("ok")
+      setFormData({
+        name:"",
+        email:"",
+        message:""
+      })
+      
+      setTimeout(()=>{
+        setStatus("idle")
+      },500)
     }catch (e) {
       const validationError = e as yup.ValidationError;
       const newError: Record<string, string> = {};
@@ -265,7 +287,7 @@ function App() {
                     : "bg-(--primary)/10 text-(--primary) border-(--primary)/30"
                 }`}
               >
-                <i className={project.status === "Terminé" ? "ri-checkbox-circle-fill" : "ri-loader-4-line"} />
+                <i className={project.status === "Terminé" ? "ri-checkbox-circle-fill" : "ri-loader-4-line animate-spin"} />
                 {project.status}
               </span>
             </div>
@@ -447,11 +469,11 @@ function App() {
           <button
             type="submit"
             onClick={handleSubmit}
-            disabled={status === "sending"}
+            disabled={status === "Envoyé"}
             className="mt-2 bg-(--primary) hover:bg-(--primary-hover) disabled:opacity-60 disabled:cursor-not-allowed text-white px-6 py-3.5 rounded-full flex justify-center items-center gap-2 font-bold cursor-pointer transition-colors shadow-md"
           >
-            {status === "sending" && <i className="ri-loader-4-line animate-spin" />}
-            {status === "sent" ? "Message envoyé ✓" : "Envoyer"}
+            {status === "Envoyé" && <i className="ri-loader-4-line animate-spin" />}
+            {status === "ok" ? "Message envoyé" : "Envoyer"}
           </button>
         </form>
 
