@@ -74,29 +74,29 @@ export const skillCategories = [
   {
     icon: "ri-layout-4-line",
     title: "Frontend",
-    skills: [{ icon: "ri-reactjs-line", title: "ReactJS - TypeScript", value: 90 }],
+    skills: [{ icon: "ri-reactjs-line", title: "ReactJS - TypeScript", value: 82 }],
   },
   {
     icon: "ri-server-line",
     title: "Backend & Langages",
     skills: [
       { icon: "ri-code-s-slash-line", title: "Laravel - PHP", value: 90 },
-      { icon: "ri-terminal-window-line", title: "VB.net", value: 55 },
+      { icon: "ri-terminal-window-line", title: "VB.net", value: 50 },
     ],
   },
   {
     icon: "ri-smartphone-line",
     title: "Mobile",
     skills: [
-      { icon: "ri-code-line", title: "Dart", value: 80 },
-      { icon: "ri-smartphone-line", title: "Flutter", value: 85 },
+      { icon: "ri-code-line", title: "Dart", value: 75 },
+      { icon: "ri-smartphone-line", title: "Flutter", value: 80 },
     ],
   },
   {
     icon: "ri-database-2-line",
     title: "Bases de données",
     skills: [
-      { icon: "ri-database-2-line", title: "MySQL", value: 95 },
+      { icon: "ri-database-2-line", title: "MySQL", value: 88 },
       { icon: "ri-database-2-fill", title: "PostgreSQL", value: 65 },
       { icon: "ri-flashlight-line", title: "Supabase", value: 55 },
     ],
@@ -104,7 +104,7 @@ export const skillCategories = [
   {
     icon: "ri-tools-line",
     title: "Outils & Versioning",
-    skills: [{ icon: "ri-git-branch-line", title: "Git", value: 85 }],
+    skills: [{ icon: "ri-git-branch-line", title: "Git", value: 80 }],
   },
 ];
 
