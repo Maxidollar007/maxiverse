@@ -1,4 +1,5 @@
 import type { ServiceCardProps } from "../types";
+import { motion } from 'framer-motion';
 
 export function Card({
   number,
@@ -9,7 +10,11 @@ export function Card({
   featured = false,
 }: ServiceCardProps) {
   return (
-    <article
+    <motion.article
+    initial={{opacity:0, x:70}}
+    whileInView={{opacity:1,x:0}}
+    viewport={{once:true}}
+    transition={{duration:1}}
       className={`group relative overflow-hidden rounded-2xl border border-(--border) bg-(--surface) p-7 md:p-8 hover:border-(--primary) transition-colors duration-500 ${
         featured ? "lg:col-span-2" : ""
       }`}
@@ -68,6 +73,6 @@ export function Card({
           <i className="ri-arrow-right-line" />
         </a>
       )}
-    </article>
+    </motion.article>
   );
 }

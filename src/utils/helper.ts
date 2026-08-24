@@ -239,7 +239,7 @@ export const quality :string[]=[ // Mes phrases
   "C’est une personne impliquée, créative et attentive aux détails. On sent qu’il aime réellement ce qu’il fait"
 ]
 
-/* Fonction pour dire si je suis expert ou avancé */
+/* Fonction pour dire si je suis expert ou avancé intermediaire */
 export function getLevel(value: number): { label: string; className: string } {
   if (value >= 90) return { label: "Expert", className: "text-(--success)" };
   if (value >= 75) return { label: "Avancé", className: "text-(--primary)" };

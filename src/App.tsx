@@ -2,14 +2,14 @@ import { useTheme } from "./context/themeContext"
 import "remixicon/fonts/remixicon.css";
 import { Card } from "./components/card";
 import { ProgressBar } from "./components/progressBar";
-import { useRef, useState } from "react";
+import {useState } from "react";
 import type { FormData } from "./types";
 import { validationSchemaInformation } from "./validation/validationSchemaInformation";
 import * as yup from 'yup';
 import { contactMethods, projects, quality, services, skillCategories, socialLinks, useTypingEffect } from "./utils/helper";
+import { motion } from 'framer-motion';
 function App() {
 
-  const form = useRef(null);
   const {theme , toogleTheme}=useTheme()
   const [error,setError]=useState<Record<string, string>>({});
 
@@ -52,7 +52,6 @@ function App() {
     <>
     <div className={`${theme === "light" ? "light" : "dark"} min-h-screen w-full bg-(--background) text-(--text) transition-all duration-700`}>
   
-  {/* NAVBAR */}
   <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-(--background)/80 border-b border-(--border)">
     <div className="w-[90%] md:w-[80%] mx-auto py-4 flex flex-wrap justify-between items-center gap-4">
       <div className="text-3xl text-(--text) font-bold tracking-tight">
@@ -95,12 +94,14 @@ function App() {
     </div>
   </header>
 
-  {/* HERO SECTION */}
   <section id="acceuil" className="w-[90%] md:w-[80%] mx-auto pt-12 pb-20 min-h-[calc(100vh-80px)] flex flex-col justify-center">
+
     <div className="flex flex-col lg:flex-row justify-between items-center gap-12">
-      
-      {/* Présentation */}
-      <div className="flex flex-col gap-4 w-full lg:w-3/5 text-left">
+      <motion.div 
+      initial={{opacity:0}}
+    animate={{opacity:1}}
+    transition={{duration:2}}
+      className="flex flex-col gap-4 w-full lg:w-3/5 text-left">
         <h1 className="text-(--primary) text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight">
           Maxi Dollar
         </h1>
@@ -110,10 +111,10 @@ function App() {
         <h3 className="text-(--text-muted) text-lg sm:text-xl">
           <span className="font-semibold text-(--primary)">Mon objectif</span> : Construire des solutions simples, efficaces et adaptées aux besoins réels.
         </h3>
-        
-        {/* CTA Buttons */}
+
         <div className="mt-6 flex flex-wrap gap-4 items-center">
           <a href="#contacts" className="flex items-center gap-3 font-medium bg-(--primary) text-(--text) hover:bg-(--primary-hover) px-6 py-3.5 rounded-md transition-all duration-300 cursor-pointer shadow-md">
+            <i className="ri-phone-line text-lg"></i>
             <span>Me contacter</span>
           </a>
           <button type="button" className="flex items-center gap-3 font-medium border border-(--border) text-(--primary) hover:text-(--primary-hover) hover:border-(--primary) px-6 py-3.5 rounded-md transition-all duration-300 cursor-pointer">
@@ -121,16 +122,24 @@ function App() {
             <span>Télécharger mon CV</span>
           </button>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Photo de profil */}
-      <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 shrink-0 border-2 border-(--primary) rounded-full shadow-lg p-2 relative">
+      <motion.div 
+        initial={{scale:0.5}}
+        animate={{scale:1}}
+        transition={{
+          type:"spring",
+          stiffness:400,
+          damping:8
+        }}
+
+
+      className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 shrink-0 border-2 border-(--primary) rounded-full shadow-lg p-2 relative">
         <img src="src/image/profile.webp" className="h-full w-full object-cover rounded-full" alt="Maxi Dollar" />
-      </div>
+      </motion.div>
 
     </div>
 
-    {/* Terminal / Code Window */}
     <div className={`w-full lg:w-2/3 max-w-2xl rounded-xl p-4 mt-12 shadow-xl border border-(--border) ${theme === 'light' ? "bg-white text-black" : "bg-gray-900 text-white"}`}>
       <div className="flex items-center gap-2 mb-3">
         <div className="w-3.5 h-3.5 rounded-full bg-red-500"></div>
@@ -149,7 +158,6 @@ function App() {
     </div>
   </section>
 
-  {/* SERVICES */}
   <section id="services" className="w-[90%] md:w-[80%] mx-auto py-20 border-t border-(--border)">
     <div className="text-center mb-14">
       <span className="text-(--primary) font-mono uppercase tracking-wider text-sm font-semibold">
@@ -170,7 +178,6 @@ function App() {
     </div>
   </section>
 
-  {/* SKILLS */}
   <section id="skills" className="w-[90%] md:w-[80%] mx-auto py-20 border-t border-(--border)">
     <div className="text-center mb-14">
       <span className="text-(--primary) font-mono uppercase tracking-wider text-sm font-semibold">
@@ -209,7 +216,6 @@ function App() {
     </div>
   </section>
 
-  {/* REALISATIONS */}
   <section id="realisations" className="w-[90%] md:w-[80%] mx-auto py-20 border-t border-(--border)">
     <div className="text-center mb-14">
       <span className="text-(--primary) font-mono uppercase tracking-wider text-sm font-semibold">
@@ -225,7 +231,11 @@ function App() {
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {projects.map((project) => (
-        <article
+        <motion.article
+        initial={{opacity:0, x:70}}
+    whileInView={{opacity:1,x:0}}
+    viewport={{once:true}}
+    transition={{duration:1}}
           key={project.title}
           className={`group rounded-2xl border border-(--border) bg-(--surface) overflow-hidden hover:border-(--primary) transition-all duration-300 shadow-sm hover:shadow-md ${
             project.featured ? "lg:col-span-2" : ""
@@ -319,12 +329,11 @@ function App() {
             </div>
 
           </div>
-        </article>
+        </motion.article>
       ))}
     </div>
   </section>
 
-  {/* CONTACT */}
   <section id="contacts" className="w-full border-t border-(--border) py-16">
     <div className="w-[90%] md:w-[80%] mx-auto flex items-center gap-4 mb-12">
       <div className="flex items-center justify-center h-14 w-14 shrink-0 rounded-xl text-(--primary) text-2xl bg-(--surface) border border-(--border)">
@@ -338,8 +347,7 @@ function App() {
 
     <div className="w-[90%] md:w-[80%] mx-auto">
       <div className="flex flex-col lg:flex-row gap-12 items-start">
-        
-        {/* Informations */}
+
         <div className="w-full lg:w-2/5 flex flex-col">
           <div className="text-(--primary)">
             <h3 className="text-3xl md:text-4xl font-bold">MD</h3>
@@ -389,7 +397,6 @@ function App() {
           </div>
         </div>
 
-        {/* Formulaire */}
         <form className="w-full lg:w-3/5 bg-(--surface) border border-(--border) p-6 sm:p-8 rounded-2xl shadow-md flex flex-col gap-5">
           <h3 className="text-2xl md:text-3xl text-(--text) font-bold mb-4 text-center">
             Laissez-moi votre avis
@@ -452,7 +459,6 @@ function App() {
     </div>
   </section>
 
-  {/* FOOTER */}
   <footer className="w-full border-t border-(--border) py-8">
     <div className="w-[90%] md:w-[80%] mx-auto flex flex-col sm:flex-row gap-4 justify-between items-center text-center sm:text-left">
       <div className="text-sm text-(--text-muted) font-medium">
