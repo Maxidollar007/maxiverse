@@ -74,7 +74,7 @@ export const skillCategories = [
   {
     icon: "ri-layout-4-line",
     title: "Frontend",
-    skills: [{ icon: "ri-reactjs-line", title: "ReactJS - TypeScript", value: 82 }],
+    skills: [{ icon: "ri-reactjs-line", title: "ReactJS - TypeScript", value: 90 }],
   },
   {
     icon: "ri-server-line",
