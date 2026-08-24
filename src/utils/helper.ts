@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import type { ContactMethod, Project, SocialLink } from "../types";
-
+import gdp from '../image/gdp.webp'
+import gds from '../image/gds.webp'
+import gdt from '../image/gdt.webp'
+import ogin from '../image/ogin.webp'
+import port from '../image/port.png'
+import vete from '../image/vete.png'
 // les services que je propose
 export const services = [
   {
@@ -111,7 +116,7 @@ export const projects: Project[] = [
     description:
       "Plateforme web complète pour la gestion des ressoucees academiques , pedagogiques et adminstratives",
     status: "En cours",
-    image:"src/image/ogin.webp",
+    image:ogin,
     tags: ["React", "TypeScript", "Laravel", "MySQL"],
     features: [
       "Espace enseignant, élève et administration",
@@ -135,7 +140,7 @@ export const projects: Project[] = [
     description:
       "Application de gestion de presences qui marque la présence des stagiaires pour l'entreprise SERDI",
     status: "Terminé",
-    image:"src/image/gdp.webp",
+    image:gdp,
     tags: ["React", "Laravel", "MySQL"],
     features: ["Marquage de présences", "TTableau de bord administratif", "Consultation du taux d'absenteismes "],
     codeUrl: "https://github.com/Maxidollar007/GDPV2.git"
@@ -149,7 +154,7 @@ export const projects: Project[] = [
       features: ["Saveurs authentiques", "Une expérience gourmande"],
       codeUrl: "https://github.com/Maxidollar007/Restaurant-gastronomique-camerounais-.git",
       liveUrl:"https://restaurant-gastronomique-camerounai.vercel.app/",
-      image:"src/image/port.PNG",
+      image:port,
       featured:true
     },
     {
@@ -157,7 +162,7 @@ export const projects: Project[] = [
       description:
       "Application web de gestion de projets et de tâche pour l'entreprise SERDI",
       status: "Terminé",
-      image:"src/image/gdt.webp",
+      image:gdt,
       tags: ["React", "Laravel", "MySQL"],
     features: ["Consultation des projets", "TTableau de bord administratif", "Check des tâche en temps réels","Notification en temps réels"],
     codeUrl:"https://github.com/Maxidollar007/Systeme-de-Gestion-de-Tache.git"
@@ -167,7 +172,7 @@ export const projects: Project[] = [
     description:
       "Application web de dons et de suivie de sang",
       status: "Terminé",
-      image:"src/image/gds.webp",
+      image:gds,
       tags: ["HTML-CSS/JS", "PHP", "MySQL"],
       features: ["Tableau de bord du personnel ", "Enregistrement du donneurs", "Consultation des stocks de groupes sanguins disponible","TGestion de rendez-vous"],
       codeUrl:"https://github.com/Maxidollar007/GDS.git"
@@ -181,7 +186,7 @@ export const projects: Project[] = [
         features: ["Commande en ligne", "Sastification"],
         codeUrl: "https://github.com/Maxidollar007/Site-vitrine-de-vente-de-vetement.git",
         liveUrl:"https://restaurant-gastronomique-camerounai-xi.vercel.app/",
-        image:"src/image/vete.PNG",
+        image:vete,
         featured:true
       },
   ];

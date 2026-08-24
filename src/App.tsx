@@ -1,4 +1,5 @@
 import { useTheme } from "./context/themeContext"
+import profile from './image/profile.webp'
 import emailjs from "@emailjs/browser";
 import "remixicon/fonts/remixicon.css";
 import { Card } from "./components/card";
@@ -50,7 +51,7 @@ function App() {
         email:"",
         message:""
       })
-      
+
       setTimeout(()=>{
         setStatus("idle")
       },500)
@@ -157,7 +158,7 @@ function App() {
 
 
       className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 shrink-0 border-2 border-(--primary) rounded-full shadow-lg p-2 relative">
-        <img src="src/image/profile.webp" className="h-full w-full object-cover rounded-full" alt="Maxi Dollar" />
+        <img src={profile} className="h-full w-full object-cover rounded-full" alt="Maxi Dollar" />
       </motion.div>
 
     </div>
