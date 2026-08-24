@@ -10,6 +10,7 @@ import { validationSchemaInformation } from "./validation/validationSchemaInform
 import * as yup from 'yup';
 import { contactMethods, projects, quality, services, skillCategories, socialLinks, useTypingEffect } from "./utils/helper";
 import { motion } from 'framer-motion';
+import { toast, ToastContainer } from "react-toastify";
 function App() {
 
   const {theme , toogleTheme}=useTheme()
@@ -32,9 +33,9 @@ function App() {
 
   const handleSubmit=async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
-    setStatus("Envoyé")
     try{
       await validationSchemaInformation.validate(formData, { abortEarly: false });
+      setStatus("Envoyé")
       
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -51,21 +52,42 @@ function App() {
         email:"",
         message:""
       })
+      toast.success("Message envoyé avec succès", {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: theme=="light" ? 'light' : 'dark'
+      })
 
       setTimeout(()=>{
         setStatus("idle")
       },500)
     }catch (e) {
+      console.log(e);
+      
       const validationError = e as yup.ValidationError;
-      const newError: Record<string, string> = {};
-
-      validationError.inner.forEach((err: yup.ValidationError) => {
+      const newError: Record<string, string> = {};+
+      validationError.inner?.forEach((err: yup.ValidationError) => {
         if (err.path) {
           newError[err.path] = err.message;
         }
       });
-      setError(newError);
-      console.log(error)
+      setError(newError); 
+      toast.error("Erreur du reseau , veuillez réessayer", {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: theme=="light" ? 'light' : 'dark'
+      })
+      setStatus("idle")
     }
     }
     
@@ -504,8 +526,8 @@ function App() {
       </div>
     </div>
   </footer>
-
 </div>
+<ToastContainer />
     </>
   )
 }
