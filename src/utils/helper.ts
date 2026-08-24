@@ -81,7 +81,7 @@ export const skillCategories = [
     title: "Backend & Langages",
     skills: [
       { icon: "ri-code-s-slash-line", title: "Laravel - PHP", value: 90 },
-      { icon: "ri-terminal-window-line", title: "VB.net", value: 75 },
+      { icon: "ri-terminal-window-line", title: "VB.net", value: 55 },
     ],
   },
   {
@@ -97,8 +97,8 @@ export const skillCategories = [
     title: "Bases de données",
     skills: [
       { icon: "ri-database-2-line", title: "MySQL", value: 95 },
-      { icon: "ri-database-2-fill", title: "PostgreSQL", value: 85 },
-      { icon: "ri-flashlight-line", title: "Supabase", value: 85 },
+      { icon: "ri-database-2-fill", title: "PostgreSQL", value: 65 },
+      { icon: "ri-flashlight-line", title: "Supabase", value: 55 },
     ],
   },
   {

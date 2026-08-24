@@ -140,10 +140,10 @@ function App() {
             <i className="ri-phone-line text-lg"></i>
             <span>Me contacter</span>
           </a>
-          <button type="button" className="flex items-center gap-3 font-medium border border-(--border) text-(--primary) hover:text-(--primary-hover) hover:border-(--primary) px-6 py-3.5 rounded-md transition-all duration-300 cursor-pointer">
+          {/* <button type="button" className="flex items-center gap-3 font-medium border border-(--border) text-(--primary) hover:text-(--primary-hover) hover:border-(--primary) px-6 py-3.5 rounded-md transition-all duration-300 cursor-pointer">
             <i className="ri-download-line text-lg"></i>
             <span>Télécharger mon CV</span>
-          </button>
+          </button> */}
         </div>
       </motion.div>
 
