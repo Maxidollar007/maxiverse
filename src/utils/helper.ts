@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { ContactMethod, Project, SocialLink } from "../types";
 
 // les services que je propose
@@ -110,14 +111,14 @@ export const projects: Project[] = [
     description:
       "Plateforme web complète pour la gestion des ressoucees academiques , pedagogiques et adminstratives",
     status: "En cours",
+    image:"src/image/ogin.webp",
     tags: ["React", "TypeScript", "Laravel", "MySQL"],
     features: [
       "Espace enseignant, élève et administration",
       "PréInscription et Inscription en lignes",
       "Accès au note ",
     ],
-    liveUrl: "#",
-    codeUrl: "#",
+    codeUrl: "https://github.com/Maxidollar007/CampusOne.git",
     featured: true,
   },
   {
@@ -127,51 +128,70 @@ export const projects: Project[] = [
     status: "En cours",
     tags: ["Flutter", "Dart", "Supabase"],
     features: ["Catalogue produits", "Tableau de bord employé", "Tableau de bord ventes" ,"Inventaires"],
-    codeUrl: "#",
+    
   },
   {
     title: "Gestion des présences - SERDI",
     description:
       "Application de gestion de presences qui marque la présence des stagiaires pour l'entreprise SERDI",
     status: "Terminé",
+    image:"src/image/gdp.webp",
     tags: ["React", "Laravel", "MySQL"],
     features: ["Marquage de présences", "TTableau de bord administratif", "Consultation du taux d'absenteismes "],
+    codeUrl: "https://github.com/Maxidollar007/GDPV2.git"
   },
-    {
-      title: "Site vitrine de vente des ordinateurs en lignes",
+  {
+      title: "Site web de restaurant gastronomique du Cameroun",
       description:
-        "Présentaion des equipements informatiques",
+        "Savourez des plats traditionnels préparés avec passion, des recettes riches en saveurs et des produits soigneusement sélectionnés. Une invitation à découvrir le Cameroun à travers chaque bouchée.Présentaion des equipements informatiques",
       status: "Terminé",
       tags: ["HTML", "CSS", "JavaScript"],
-      features: ["Catalogue produits", "responsive", "Site intuitifs"],
-      codeUrl: "#",
-      liveUrl:"#",
+      features: ["Saveurs authentiques", "Une expérience gourmande"],
+      codeUrl: "https://github.com/Maxidollar007/Restaurant-gastronomique-camerounais-.git",
+      liveUrl:"https://restaurant-gastronomique-camerounai.vercel.app/",
+      image:"src/image/port.PNG",
       featured:true
     },
-  {
-    title: "Gestion des tâches - SERDI",
-    description:
+    {
+      title: "Gestion des tâches - SERDI",
+      description:
       "Application web de gestion de projets et de tâche pour l'entreprise SERDI",
-    status: "Terminé",
-    tags: ["React", "Laravel", "MySQL"],
+      status: "Terminé",
+      image:"src/image/gdt.webp",
+      tags: ["React", "Laravel", "MySQL"],
     features: ["Consultation des projets", "TTableau de bord administratif", "Check des tâche en temps réels","Notification en temps réels"],
+    codeUrl:"https://github.com/Maxidollar007/Systeme-de-Gestion-de-Tache.git"
   },
   {
-    title: "Gestion de dons et suivie de sang - SERDI",
+    title: "Gestion de dons et suivie de sang",
     description:
       "Application web de dons et de suivie de sang",
-    status: "Terminé",
-    tags: ["HTML-CSS/JS", "PHP", "MySQL"],
-    features: ["Tableau de bord du personnel ", "Enregistrement du donneurs", "Consultation des stocks de groupes sanguins disponible","TGestion de rendez-vous"],
-  },
-];
+      status: "Terminé",
+      image:"src/image/gds.webp",
+      tags: ["HTML-CSS/JS", "PHP", "MySQL"],
+      features: ["Tableau de bord du personnel ", "Enregistrement du donneurs", "Consultation des stocks de groupes sanguins disponible","TGestion de rendez-vous"],
+      codeUrl:"https://github.com/Maxidollar007/GDS.git"
+    },
+    {
+        title: "Site de vitrine de vente de vêtements - MAXI-atelier",
+        description:
+          "Découvrez une mode camerounaise moderne, pensée pour révéler votre style. Des pièces soigneusement sélectionnées, des créations inspirées et des prix accessibles en FCFA.",
+        status: "Terminé",
+        tags: ["HTML", "CSS", "JavaScript"],
+        features: ["Commande en ligne", "Sastification"],
+        codeUrl: "https://github.com/Maxidollar007/Site-vitrine-de-vente-de-vetement.git",
+        liveUrl:"https://restaurant-gastronomique-camerounai-xi.vercel.app/",
+        image:"src/image/vete.PNG",
+        featured:true
+      },
+  ];
 
 
 
 export const socialLinks: SocialLink[] = [
-  { icon: "ri-github-fill", label: "GitHub", href: "#" },
-  { icon: "ri-linkedin-fill", label: "LinkedIn", href: "#" },
-  { icon: "ri-whatsapp-fill", label: "WhatsApp", href: "#" },
+  { icon: "ri-github-fill", label: "GitHub", href: " https://github.com/Maxidollar007" },
+  { icon: "ri-linkedin-fill", label: "LinkedIn", href: "www.linkedin.com/in/jeanhirwa-5b306833a" },
+  { icon: "ri-whatsapp-fill", label: "WhatsApp", href: "https://wa.me/237697323715" },
   { icon: "ri-mail-fill", label: "Email", href: "mailto:hirwajean58@gmail.com" },
 ];
 
@@ -196,7 +216,7 @@ export const contactMethods: ContactMethod[] = [
     title: "WhatsApp",
     detail: "Le plus rapide pour discuter d'un projet.",
     actionLabel: "Écrivez-nous",
-    href: "https://wa.me/237000000000",
+    href: "https://wa.me/237697323715",
   },
   {
     icon: "ri-map-pin-line",
@@ -210,9 +230,59 @@ export const sentences:string[]=[
   "Christiano Dior"
 ]
 
+export const quality :string[]=[ // Mes phrases
+  "J’ai toujours apprécié sa capacité à comprendre rapidement un problème et à trouver une solution simple et efficace.",
+  "C’est quelqu’un de sérieux, curieux et surtout très déterminé lorsqu’il se fixe un objectif",
+  "Travailler avec lui, c’est avoir quelqu’un qui ne se contente pas de faire fonctionner les choses : il cherche à comprendre comment et pourquoi elles fonctionnent",
+  "Il est particulièrement à l’aise pour transformer une idée en projet concret, notamment dans le développement d’applications",
+  "Au-delà de ses compétences techniques, c’est quelqu’un de fiable avec qui il est agréable de collaborer",
+  "C’est une personne impliquée, créative et attentive aux détails. On sent qu’il aime réellement ce qu’il fait"
+]
 
+/* Fonction pour dire si je suis expert ou avancé */
 export function getLevel(value: number): { label: string; className: string } {
   if (value >= 90) return { label: "Expert", className: "text-(--success)" };
   if (value >= 75) return { label: "Avancé", className: "text-(--primary)" };
   return { label: "Intermédiaire", className: "text-(--text-muted)" };
+}
+
+/* Fonction de saisie */
+export function useTypingEffect(sentences: string[]) {
+  //Text )à afficher
+  const [text, setText] = useState("");
+  //I,ndex actuel 
+  const [index, setIndex] = useState(0);
+  //Si je dois effacer oupas 
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    // Prensdre la phrase à 'lindex
+    const currentSentence = sentences[index];
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Je recuppre les letres progressivement
+        const nextText = currentSentence.slice(0, text.length + 1);
+        setText(nextText!=currentSentence ? nextText + " |" : nextText);
+
+        if (nextText === currentSentence) {
+          // si lettre ont lameme longuerur je commence la saisie
+          setTimeout(() => setIsDeleting(true), 1200);
+        }
+      } else {
+        const nextText = currentSentence.slice(0, text.length - 1);
+        setText(nextText);
+
+        if (nextText === "") {
+          // passe à l'index suivant
+          setIsDeleting(false);
+          setIndex((prev) => (prev + 1) % sentences.length);
+        }
+      }
+    }, isDeleting ? 40 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, index, sentences]);
+
+  return text;
 }
